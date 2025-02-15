@@ -1,0 +1,214 @@
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: black;
+  color: white;
+  font-family: "Archivo Black", sans-serif;
+}
+
+/* Header & Navigation */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.logo {
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+/* Desktop Navigation (Large Devices) */
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: gray;
+}
+
+/* Hamburger Menu Icon */
+.menu-icon {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25px;
+  height: 18px;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.menu-icon span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: white;
+}
+
+/* Mobile Navigation Overlay */
+.mobile-nav-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  z-index: 100;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-nav-overlay .close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 30px;
+  cursor: pointer;
+  color: white;
+}
+
+.mobile-nav-overlay .mobile-nav-links {
+  list-style: none;
+  text-align: center;
+}
+
+.mobile-nav-overlay .mobile-nav-links li {
+  margin: 20px 0;
+}
+
+.mobile-nav-overlay .mobile-nav-links li a {
+  text-decoration: none;
+  color: white;
+  font-size: 30px;
+  transition: color 0.3s ease;
+}
+
+.mobile-nav-overlay .mobile-nav-links li a:hover {
+  color: gray;
+}
+
+/* Smooth Fade-in Effect */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  background: linear-gradient(to right, #000, #222);
+  transition: background 0.5s ease;
+  opacity: 0;
+  transform: scale(0.98);
+  animation: fadeInHero 1s ease-out forwards;
+}
+
+.text h1 {
+  font-size: 50px;
+  text-transform: uppercase;
+  margin: 10px 0;
+  opacity: 0;
+  transform-origin: center;
+  transform: scale(0.9);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* On Hover, Text Becomes More Vibrant */
+.text h1:hover {
+  color: #ffcc00;
+  transform: scale(1.05);
+}
+
+.images {
+  display: flex;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+/* Enhanced Image Hover Effects */
+.images img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
+  filter: grayscale(100%);
+}
+
+/* Hover Effect on Images */
+.images img:hover {
+  transform: scale(1.2);
+  filter: grayscale(0%);
+}
+
+/* Vector-Like Effect on Non-Hovered Images */
+.images img:not(:hover) {
+  filter: grayscale(100%) contrast(200%) brightness(200%);
+}
+
+/* Keyframe Animation for Hero Section */
+@keyframes fadeInHero {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsive Improvements */
+@media (max-width: 1024px) {
+  .text h1 {
+    font-size: 40px;
+  }
+  .images img {
+    width: 130px;
+    height: 130px;
+  }
+  .nav-links {
+    gap: 15px;
+  }
+  .nav-links li a {
+    font-size: 14px;
+  }
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+  .menu-icon {
+    display: flex;
+  }
+  .text h1 {
+    font-size: 30px;
+  }
+  .images img {
+    width: 100px;
+    height: 100px;
+  }
+}
