@@ -3,9 +3,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const textHeadings = document.querySelectorAll(".text h1");
   const menuIcon = document.querySelector(".menu-icon");
   const mobileNavOverlay = document.querySelector(".mobile-nav-overlay");
-  const closeBtn = document.querySelector(".mobile-nav-overlay .close-btn");
+  const closeBtn = document.querySelector(".close-btn");
 
-  // Toggle Mobile Navigation Overlay
+  // ✅ Open Mobile Navigation
   menuIcon.addEventListener("click", () => {
     mobileNavOverlay.style.display = "flex";
     gsap.fromTo(
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   });
 
-  // Close Mobile Navigation Overlay
+  // ✅ Close Mobile Navigation
   closeBtn.addEventListener("click", () => {
     gsap.to(mobileNavOverlay, {
       opacity: 0,
@@ -29,6 +29,28 @@ document.addEventListener("DOMContentLoaded", () => {
         mobileNavOverlay.style.display = "none";
       },
     });
+  });
+});
+
+// Toggle Mobile Navigation Overlay
+menuIcon.addEventListener("click", () => {
+  mobileNavOverlay.style.display = "flex";
+  gsap.fromTo(mobileNavOverlay, { opacity: 0 }, { opacity: 1, duration: 0.5 });
+  gsap.fromTo(
+    ".mobile-nav-links li",
+    { opacity: 0, y: 50 },
+    { opacity: 1, y: 0, stagger: 0.2, duration: 0.5, ease: "power2.out" }
+  );
+});
+
+// Close Mobile Navigation Overlay
+closeBtn.addEventListener("click", () => {
+  gsap.to(mobileNavOverlay, {
+    opacity: 0,
+    duration: 0.5,
+    onComplete: () => {
+      mobileNavOverlay.style.display = "none";
+    },
   });
 
   // Smooth Text Animation on Load
